@@ -1,9 +1,21 @@
 # currency_service
 
-How to run:
+### How to run: 
+1. `./run.sh`
+2. To check: `curl "localhost:5000/get_rates?curr_from=aed&curr_to=usd"`
 
-API for current currency rates:
+### Input example:
+```
+{
+  "curr_from": "USD",
+  "curr_to": "AED"
+}
+```
 
-Input example:
+### Output example:
 
-Output example:
+```
+{
+  "rate": 0.2281707346846669
+}
+```
