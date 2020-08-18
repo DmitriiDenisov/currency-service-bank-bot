@@ -1,3 +1,6 @@
+import argparse
+import os
+
 import requests
 from flask import Flask, request, jsonify
 from wtforms import PasswordField, validators, Form, StringField, DateField, IntegerField, FloatField
@@ -7,6 +10,8 @@ from collections import namedtuple
 
 RespCurr = namedtuple('RespCurr', ['success', 'timestamp', 'base', 'date', 'rates'])
 
+parser = argparse.ArgumentParser(description='test')
+parser.add_argument('--port', default=os.environ.get('port'))
 
 class RatesSchema(Form):
     # filters - function that is applied before validators are checked
@@ -25,8 +30,8 @@ def get_rates():
     params = RatesSchema(request.args)
     if not params.validate():
         if ERROR_CURR in params.errors:
-            return jsonify({'resp': 'Necessary parameters are not provided!'})
-        return jsonify({'resp': 'Currency should be in AED, EUR or USD'})
+            return jsonify({'resp': 'Currency should be in AED, EUR or USD'})
+        return jsonify({'resp': 'Necessary parameters are not provided!'})
     querystring = querystring_base.copy()
     from_ = params.curr_from.data
     to_ = params.curr_to.data
@@ -45,4 +50,8 @@ def get_rates():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    args = parser.parse_args()
+    if not args.port:
+        print('Port was not provided')
+        exit(parser.print_usage())
+    app.run(debug=True, host='0.0.0.0', port=args.port)
