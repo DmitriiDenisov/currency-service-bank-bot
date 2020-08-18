@@ -1,8 +1,10 @@
 # currency_service
 
 ### How to run: 
-1. `./run.sh`
-2. To check: `curl "localhost:5000/get_rates?curr_from=aed&curr_to=usd"`
+1. Clone this repo
+2. (optional) change PORT variable in `run.sh` script
+3. `bash ./run.sh`
+4. To check: `curl "localhost:5000/get_rates?curr_from=aed&curr_to=usd"`
 
 ### Input example:
 ```
