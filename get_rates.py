@@ -1,12 +1,7 @@
 import requests
 from flask import Flask, request, jsonify
 
-from constants import URL, TOKEN
-
-querystring_base = {
-    'access_key': TOKEN,
-    'format': '1'
-}
+from constants import URL, querystring_base
 
 app = Flask(__name__)
 
@@ -23,7 +18,7 @@ def get_rates():
     if response.status_code == 404:
         return jsonify({'resp': 'API failed!'})
     resp = response.json()
-    rate = resp['rates'][to_] / resp['rates'][from_]
+    rate = resp['rates'][to_.upper()] / resp['rates'][from_.upper()]
 
     return jsonify({'rate': rate})
 
