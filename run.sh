@@ -13,3 +13,4 @@ PORT=5002
 
 # Docker run container
 sudo docker run -p $PORT:$PORT -v $(pwd)/token.txt:/app/token.txt --restart always --name curr_cont -e port=$PORT -d curr-serv
+# sudo docker run -p $PORT:$PORT -v $(pwd)/token.txt:/app/token.txt --restart always --name curr_cont --env-file ./env.list -d curr-serv

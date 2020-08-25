@@ -44,7 +44,7 @@ def get_rates():
     if not resp:
         return jsonify({'resp': 'API failed!'})
     resp = RespCurr(**resp)
-    rate = resp.rates[from_] / resp.rates[to_]
+    rate = resp.rates[to_] / resp.rates[from_]
 
     return jsonify({'rate': rate})
 
