@@ -1,6 +1,3 @@
-import argparse
-import os
-
 import requests
 from flask import Flask, request, jsonify
 from wtforms import PasswordField, validators, Form, StringField, DateField, IntegerField, FloatField
@@ -10,8 +7,6 @@ from collections import namedtuple
 
 RespCurr = namedtuple('RespCurr', ['success', 'timestamp', 'base', 'date', 'rates'])
 
-parser = argparse.ArgumentParser(description='test')
-parser.add_argument('--port', default=os.environ.get('port'))
 
 class RatesSchema(Form):
     # filters - function that is applied before validators are checked
