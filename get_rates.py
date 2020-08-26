@@ -5,7 +5,7 @@ import requests
 from flask import Flask, request, jsonify
 from wtforms import PasswordField, validators, Form, StringField, DateField, IntegerField, FloatField
 
-from constants import URL, querystring_base, ERROR_CURR
+from settings import URL, querystring_base, ERROR_CURR, PORT
 from collections import namedtuple
 
 RespCurr = namedtuple('RespCurr', ['success', 'timestamp', 'base', 'date', 'rates'])
@@ -50,8 +50,4 @@ def get_rates():
 
 
 if __name__ == '__main__':
-    args = parser.parse_args()
-    if not args.port:
-        print('Port was not provided')
-        exit(parser.print_usage())
-    app.run(debug=True, host='0.0.0.0', port=args.port)
+    app.run(debug=True, host='0.0.0.0', port=PORT)
