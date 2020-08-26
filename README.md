@@ -3,10 +3,14 @@
 ### How to run: 
 1. Clone this repo
 2. `docker login` (in case of ` Got permission denied while trying to connect...` then `sudo chmod 666 /var/run/docker.sock`)
-3. Create file `token.txt` and put there token from https://fixer.io/
-4. (optional) change PORT variable in `run.sh` script
-5. `bash ./run.sh`
-6. To check: `curl "localhost:5002/get_rates?curr_from=aed&curr_to=usd"`
+3. Create file `.env` and put there token (from https://fixer.io/) and port, it should look like this:
+```
+TOKEN=abcd
+PORT=5004
+```
+(optional) change PORT variable in `run.sh` script
+4. `bash ./run.sh`
+5. To check: `curl "localhost:5004/get_rates?curr_from=aed&curr_to=usd"`
 
 ### Input example:
 ```
