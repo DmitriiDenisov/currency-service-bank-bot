@@ -9,6 +9,7 @@ TOKEN=abcd
 PORT=5004
 ```
 (optional) change PORT variable in `run.sh` script
+
 4. `bash ./run.sh`
 5. To check: `curl "localhost:5004/get_rates?curr_from=aed&curr_to=usd"`
 
